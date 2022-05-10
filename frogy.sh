@@ -136,6 +136,7 @@ done <output/$cdir/$cdir.master
 sort output/$cdir/resolved.txtls | uniq > output/$cdir/resolved.new
 mv output/$cdir/resolved.new output/$cdir/resolved.txtls
 
+
 ############################################################################# FINDING LOGIN PORTALS  ##################################################################
 
 portlst=`naabu -l output/$cdir/$cdir.master -pf ports -silent | cut -d ":" -f2 | anew | tr "\n" "," | sed 's/.$//'` &> /dev/null
@@ -181,6 +182,25 @@ if [ -f output/$cdir/loginfound.txtls ]; then
 else
 	paste -d ','  output/$cdir/rootdomain.txtls temp1.txt temp2.txt output/$cdir/livesites.txtls | sed '1 i \Root Domain,Subdomain,IP Address,Live Website' > output/$cdir/output.csv
 fi
+#################### Waybackurls enumartion ##############
+echo "Scraping wayback for data..."
+cat ./output/$cdir/livesites.txtls | waybackurls > output/$cdir/wayback-data/urls.txtls
+cat ./output/$cdir/wayback-data/urls.txtls  | sort -u | unfurl --unique keys > ./output/$cdir/wayback-data/paramlist.txt
+[ -s ./$domain/$foldername/wayback-data/paramlist.txt ] && echo "Wordlist saved to /$domain/$foldername/wayback-data/paramlist.txt"
+
+cat ./output/$cdir/wayback-data/urls.txtls  | sort -u | grep -P "\w+\.js(\?|$)" | sort -u > ./output/$cdir/wayback-data/jsurls.txt
+[ -s ./$domain/$foldername/wayback-data/jsurls.txt ] && echo "JS Urls saved to /$domain/$foldername/wayback-data/jsurls.txt"
+
+cat ./output/$cdir/wayback-data/urls.txtls  | sort -u | grep -P "\w+\.php(\?|$) | sort -u " > ./output/$cdir//wayback-data/phpurls.txt
+[ -s ./$domain/$foldername/wayback-data/phpurls.txt ] && echo "PHP Urls saved to /$domain/$foldername/wayback-data/phpurls.txt"
+
+cat ./output/$cdir/wayback-data/urls.txtls  | sort -u | grep -P "\w+\.aspx(\?|$) | sort -u " > ./output/$cdir/wayback-data/aspxurls.txt
+[ -s ./$domain/$foldername/wayback-data/aspxurls.txt ] && echo "ASP Urls saved to /$domain/$foldername/wayback-data/aspxurls.txt"
+
+cat ./output/$cdir/wayback-data/urls.txtls  | sort -u | grep -P "\w+\.jsp(\?|$) | sort -u " > ./output/$cdir/wayback-data/jspurls.txt
+[ -s ./$domain/$foldername/wayback-data/jspurls.txt ] && echo "JSP Urls saved to /$domain/$foldername/wayback-data/jspurls.txt"
+}
+
 rm temp1.txt temp2.txt
 echo -e "\e[93mTotal unique subdomains found: \e[32m$(cat output/$cdir/$cdir.master | tr '[:upper:]' '[:lower:]'| anew  | wc -l)\e[0m"
 echo -e "\e[93mTotal unique resolved subdomains found: \e[32m$(cat output/$cdir/resolved.txtls | grep -v "Can't" | wc -l) \e[0m"
