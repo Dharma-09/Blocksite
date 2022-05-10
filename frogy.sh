@@ -1,23 +1,13 @@
 #!/bin/bash
 
 echo -e "
-           .,;::::,..      ......      .,:llllc;'.
-        .cxdolcccloddl;:looooddooool::xxdlc:::clddl.
-       cxo;'',;;;,,,:ododkOOOOOOOOkdxxl:,';;;;,,,:odl
-      od:,;,...x0c:c;;ldox00000000dxdc,,:;00...,:;;cdl
-     'dc,;.    ..  .o;:odoOOOOOOOOodl,;;         ::;od.
-     'ol';          :o;odlkkkkkkkxodl,d          .o;ld.
-     .do,o..........docddoxxxxxxxxodo;x,.........:d;od'
-     ;odlcl,......,odcdddodddddddddddl:d:.......:dcodl:.
-    ;clodocllcccloolldddddddddddddddddoclllccclollddolc:
-   ,:looddddollllodddddddddddddddddddddddollllodddddooc:,
-   ':lloddddddddddddddddxxdddddddodxddddddddddddddddoll:'
-    :cllclodddddddddddddxloddddddllddddddddddddddolcllc:
-     :cloolclodxxxdddddddddddddddddddddddxxxxollclool:,
-       ::cloolllllodxxxxxxxxxxxxxxkkkxxdolllllooolc:;
-         .::clooddoollllllllllllllllllloodddolcc:,
-              ,:cclloodddxxxxxxxxxdddoollcc::.
-                     .,:ccccccccccc:::.
+		        ____________     __       _____________ 
+	                \_____     /    /_ \      \      _____/
+ 		          \_____    \____/  \____/     _____/
+  		            \_____       Dharma      _____/
+    		              \___________  ___________/
+           		                /____\
+   
 "
 
 ############################################################### Housekeeping tasks ######################################################################
