@@ -176,19 +176,19 @@ fi
 echo "Scraping wayback for data..."
 cat ./output/$cdir/livesites.txtls | waybackurls > output/$cdir/wayback-data/urls.txtls
 cat ./output/$cdir/wayback-data/urls.txtls  | sort -u | unfurl --unique keys > ./output/$cdir/wayback-data/paramlist.txt
-[ -s ./$domain/$foldername/wayback-data/paramlist.txt ] && echo "Wordlist saved to /$domain/$foldername/wayback-data/paramlist.txt"
+[ -s ./output/$cdir/wayback-data/paramlist.txt ] && echo "Wordlist saved to /$domain/$foldername/wayback-data/paramlist.txt"
 
 cat ./output/$cdir/wayback-data/urls.txtls  | sort -u | grep -P "\w+\.js(\?|$)" | sort -u > ./output/$cdir/wayback-data/jsurls.txt
-[ -s ./$domain/$foldername/wayback-data/jsurls.txt ] && echo "JS Urls saved to /$domain/$foldername/wayback-data/jsurls.txt"
+[ -s ./output/$cdir/wayback-data/jsurls.txt ] && echo "JS Urls saved to /output/$cdir/wayback-data/jsurls.txt"
 
 cat ./output/$cdir/wayback-data/urls.txtls  | sort -u | grep -P "\w+\.php(\?|$) | sort -u " > ./output/$cdir//wayback-data/phpurls.txt
-[ -s ./$domain/$foldername/wayback-data/phpurls.txt ] && echo "PHP Urls saved to /$domain/$foldername/wayback-data/phpurls.txt"
+[ -s ./output/$cdir/wayback-data/phpurls.txt ] && echo "PHP Urls saved to /output/$cdir/wayback-data/phpurls.txt"
 
 cat ./output/$cdir/wayback-data/urls.txtls  | sort -u | grep -P "\w+\.aspx(\?|$) | sort -u " > ./output/$cdir/wayback-data/aspxurls.txt
-[ -s ./$domain/$foldername/wayback-data/aspxurls.txt ] && echo "ASP Urls saved to /$domain/$foldername/wayback-data/aspxurls.txt"
+[ -s ./output/$cdir/wayback-data/aspxurls.txt ] && echo "ASP Urls saved to /output/$cdir/wayback-data/aspxurls.txt"
 
 cat ./output/$cdir/wayback-data/urls.txtls  | sort -u | grep -P "\w+\.jsp(\?|$) | sort -u " > ./output/$cdir/wayback-data/jspurls.txt
-[ -s ./$domain/$foldername/wayback-data/jspurls.txt ] && echo "JSP Urls saved to /$domain/$foldername/wayback-data/jspurls.txt"
+[ -s ./output/$cdir/wayback-data/jspurls.txt ] && echo "JSP Urls saved to /output/$cdir/wayback-data/jspurls.txt"
 }
 
 rm temp1.txt temp2.txt
